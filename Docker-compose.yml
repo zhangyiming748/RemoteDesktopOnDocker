@@ -1,7 +1,7 @@
 name: vnc_on_xfce
 services:
   xfce:
-    container_name: 'conv'
+    container_name: 'xfce'
     build:
       context: .
       dockerfile: Dockerfile
