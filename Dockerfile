@@ -13,7 +13,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
 # 更新系统并升级软件包
 RUN apk update && apk upgrade
 # 安装sudo、supervisor、openssh-server、nano、tzdata等软件包
-RUN apk add sudo supervisor openssh-server openssh nano tzdata 
+RUN apk add sudo supervisor openssh-server openssh nano tzdata wqy-zenhei bash font-adobe-100dpi font-noto ttf-dejavu
 #安装xvfb和x11vnc，用于支持VNC服务。
 RUN apk add xvfb x11vnc
 # 安装xfce4桌面环境和相关插件
@@ -44,6 +44,8 @@ ADD config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml  \
 	/home/alpine/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 # 更改/home/alpine目录的所有者为alpine用户
 RUN chown -R alpine:alpine /home/alpine/
+# 字体缓存
+RUN fc-cache -f -v
 # 暴露22和5900端口，分别用于SSH和VNC服务
 EXPOSE 22 5900
 # 设置容器启动时默认执行的命令为运行supervisord进程管理器
