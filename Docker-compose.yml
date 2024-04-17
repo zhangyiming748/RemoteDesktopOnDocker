@@ -16,3 +16,6 @@ services:
     environment:
       - XRES=1280x800x24
       - TZ=Asia/Shanghai
+    ports:
+      - 5901:5900
+      - 8022:22
