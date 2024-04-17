@@ -1,0 +1,18 @@
+name: vnc_on_xfce
+services:
+  xfce:
+    container_name: 'conv'
+    build:
+      context: .
+      dockerfile: Dockerfile
+      cache_from: []
+    volumes:
+      - '/home/zen/xfce:/home/alpine'
+    deploy:
+      resources:
+        limits:
+          memory: 8192M
+          cpus: '4'
+    environment:
+      - XRES=1280x800x24
+      - TZ=Asia/Shanghai
